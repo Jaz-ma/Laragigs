@@ -12,6 +12,10 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        @auth
+
+        <script defer src="{{asset('icon.js')}}"></script>
+        @endauth
         <script src="//unpkg.com/alpinejs" defer></script>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -41,18 +45,19 @@
                         <i class="fa-solid fa-user-"></i> Welcome {{auth()->user()->name}}
                      </span>
                 </li>
-                <li>
+                <li >
                     <a href="/listings/manage" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i>
                         Manage Listings</a>
                 </li>
-                <li>
+                <li id="logout">
                    <form action="/logout" method="POST" class="inline hover:text-laravel">
                         @csrf
                         <button type="submit">
-                            <i class="fa-solid fa-door-open hover:fa-solid hover:fa-door-closed"></i> Logout
+                            <i class="fa-solid fa-door-closed" id="logout_icon" ></i> Logout
                         </button>
                     </form>
+
                 </li>
                 @else
                 <li>
