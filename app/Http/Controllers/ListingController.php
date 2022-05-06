@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listings;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -43,6 +44,8 @@ class ListingController extends Controller
 
 
         }
+
+        $formFields['users_id']= \auth()->id();
 
         Listings::create($formFields);
         return redirect('/')->with('message','Listing Created Successfully');
@@ -89,5 +92,11 @@ class ListingController extends Controller
         $listing->delete();
 
         return redirect('/')->with('message','Listing Deleted Successfully');
+    }
+
+    // Show Manage Listing page
+
+    public function manage(User $user){
+        return view('listings.manage',['listings'=> auth()->user()->listing()->get()]);
     }
 }
