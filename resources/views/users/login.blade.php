@@ -37,7 +37,7 @@
                     type="password"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="password"
-                    value="{{old('password')}}"
+                    {{-- value="{{old('password')}}" --}}
                 />
                 @error('password')
                 <p class="text-red-500 text-xs mt-1">

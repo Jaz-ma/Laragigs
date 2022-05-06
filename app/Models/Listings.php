@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Listings extends Model
 {
-    protected $fillable=['title','company','location','website','tags','email','description','logo'];
+    protected $fillable=['title','company','location','website','tags','email','description','logo','users_id'];
 
     use HasFactory;
 
@@ -26,5 +26,11 @@ class Listings extends Model
 
 
         }
+    }
+
+    //Relationship to user
+
+    public function user(){
+        return $this->belongsTo(User::class,'users_id');
     }
 }
